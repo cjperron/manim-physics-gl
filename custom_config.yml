@@ -1,0 +1,14 @@
+# Configuración de ManimGL (se lee desde el directorio actual: correr manimgl
+# desde la raíz del repo). Equivale a manim.cfg de ManimCE.
+directories:
+  base: "media/manimgl"
+camera:
+  resolution: (1920, 1080)
+  fps: 60
+  background_color: "#000000"
+tex:
+  # Mismo preámbulo que ManimCE (babel + amsmath + amssymb)
+  template: "basic"
+text:
+  # ManimCE crea Text sin familia → Pango usa "Serif"
+  font: "Serif"

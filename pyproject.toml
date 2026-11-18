@@ -1,0 +1,15 @@
+[project]
+name = "manim-physics"
+version = "0.1.0"
+description = "Educational physics animations built with Manim"
+readme = "README.md"
+requires-python = ">=3.11,<3.13"
+dependencies = [
+    "manim==0.18.1",
+    "manimgl==1.7.2",
+    "numpy>=1.26,<3",
+    "setuptools<81",
+]
+
+[tool.uv]
+package = false

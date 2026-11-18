@@ -1,4 +1,5 @@
 # Manim
+.venv/
 __pycache__/
 media/
 *.mp4

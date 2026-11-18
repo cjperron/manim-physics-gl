@@ -33,12 +33,9 @@ from manim import *
 import numpy as np
 
 # ══════════════════════════════════════════════════════════════════════════
-# CONFIGURACIÓN INSTAGRAM REELS (9:16)
+# CONFIGURACIÓN HORIZONTAL (16:9)
 # ══════════════════════════════════════════════════════════════════════════
-config.pixel_height = 1920
-config.pixel_width  = 1080
-config.frame_height = 16.0
-config.frame_width  = 9.0
+# La resolución y el aspecto se controlan desde manim.cfg.
 
 # ══════════════════════════════════════════════════════════════════════════
 # COLORES
@@ -64,12 +61,12 @@ S_LBL   = 28
 S_NOTE  = 24
 
 # ZONAS VERTICALES
-ZONE_TTL   = UP * 7.0
-ZONE_SUB   = UP * 5.8
-ZONE_EQ1   = UP * 3.5
+ZONE_TTL   = UP * 3.5
+ZONE_SUB   = UP * 2.8
+ZONE_EQ1   = UP * 1.8
 ZONE_EQ2   = UP * 0.2
-ZONE_NOTE  = DOWN * 6.2
-ZONE_BRAND = DOWN * 7.8
+ZONE_NOTE  = DOWN * 3.2
+ZONE_BRAND = DOWN * 3.7
 
 def capsule_bg(mob, fill_opacity=0.92, color=BG, buff=0.22):
     return BackgroundRectangle(mob, fill_opacity=fill_opacity, buff=buff, color=color)
@@ -156,10 +153,10 @@ class DipoloElectrico(ThreeDScene):
         pos_n  = origin + DOWN * sep / 2
         P      = origin + np.array([4.5, 3.2, 0])
 
-        eje_z  = Arrow(origin + DOWN * 2.8, origin + UP * 5.0,
+        eje_z  = Arrow(origin + DOWN * 2.8, origin + UP * 3.2,
                        color=GREY_B, stroke_width=2.0, buff=0)
         lbl_z  = Text("z", font_size=S_LBL, color=GREY_B).next_to(
-                       origin + UP * 5.0, RIGHT, buff=0.1)
+                       origin + UP * 3.2, RIGHT, buff=0.1)
 
         qp = charge_dot(pos_p, positive=True,  radius=0.16)
         qn = charge_dot(pos_n, positive=False, radius=0.16)
@@ -348,7 +345,7 @@ class DipoloElectrico(ThreeDScene):
         self.play(Write(ttl))
 
         # grad arriba, libre de colisión con las componentes
-        grad = MathTex(r"\vec{E} = -\nabla V", font_size=S_SUB + 4, color=CLR_E).move_to(UP * 5.2)
+        grad = MathTex(r"\vec{E} = -\nabla V", font_size=S_SUB + 4, color=CLR_E).move_to(UP * 2.8)
         self.play(Write(grad))
         self.wait(0.5)
 
@@ -445,7 +442,7 @@ class DipoloElectrico(ThreeDScene):
             r"\vec{E} = \frac{p}{4\pi\epsilon_0 r^3}"
             r"(2\cos\theta\,\hat{r} + \sin\theta\,\hat{\theta})",
             font_size=S_NOTE + 2, color=WHITE
-        ).move_to(UP * 5.5)
+        ).move_to(UP * 3.0)
         bg_eq = capsule_bg(eq_lbl, fill_opacity=0.80)
         self.add_fixed_in_frame_mobjects(bg_eq, eq_lbl)
 

@@ -36,15 +36,15 @@ S_LBL   = 28
 S_NOTE  = 24
 
 # ══════════════════════════════════════════════════════════════════════════
-# ZONAS VERTICALES  (formato 1080×1920, origin = centro)
+# ZONAS HORIZONTALES  (formato 16:9, origin = centro)
 # ══════════════════════════════════════════════════════════════════════════
-ZONE_TTL  = UP * 7.5   # título de escena
-ZONE_SUB  = UP * 6.2   # subtítulo
-ZONE_EQ1  = UP * 4.2   # primera ecuación
-ZONE_EQ2  = UP * 2.0   # segunda ecuación
+ZONE_TTL  = UP * 3.5   # título de escena
+ZONE_SUB  = UP * 2.8   # subtítulo
+ZONE_EQ1  = UP * 1.8   # primera ecuación
+ZONE_EQ2  = UP * 0.8   # segunda ecuación
 ZONE_MID  = ORIGIN     # zona central para visuales
-ZONE_NOTE = DOWN * 6.5  # notas al pie
-ZONE_BRAND= DOWN * 7.8  # marca
+ZONE_NOTE = DOWN * 3.2  # notas al pie
+ZONE_BRAND= DOWN * 3.7  # marca
 
 # ══════════════════════════════════════════════════════════════════════════
 # HELPERS

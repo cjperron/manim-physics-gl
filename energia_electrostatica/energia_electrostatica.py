@@ -160,7 +160,7 @@ class EnergiaElectrostatica(ThreeDScene):
         l2 = MathTex("q_2", font_size=S_LBL, color=CLR_Q)
         l2.add_updater(lambda m: m.next_to(q2, DOWN, buff=0.12))
 
-        q3 = charge_dot(UP * 4.5, positive=True, radius=0.15)
+        q3 = charge_dot(UP * 2.5, positive=True, radius=0.15)
         l3 = MathTex("q_3", font_size=S_LBL, color=CLR_Q)
         l3.add_updater(lambda m: m.next_to(q3, RIGHT, buff=0.12))
 

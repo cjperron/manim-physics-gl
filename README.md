@@ -25,18 +25,65 @@ The **Gauss's Law** animation reached **400+ likes** on Instagram in 2 days — 
 
 ## 🚀 How to Run
 
+### Requisitos del sistema
+
+Además de Python y `uv`, Manim necesita LaTeX y FFmpeg. En Arch Linux,
+CachyOS y derivados:
+
 ```bash
-# Install Manim (via micromamba)
-micromamba create -n manim python=3.11
-micromamba activate manim
-pip install manim
-
-# Preview (low quality, fast)
-manim -ql archivo.py SceneName
-
-# Production quality (1080x1920 for Instagram Reels)
-manim -qh --fps 60 -r 1080,1920 archivo.py SceneName
+sudo pacman -S --needed ffmpeg texlive-basic texlive-latexextra texlive-latexrecommended
+latex --version
 ```
+
+Después, desde la raíz del repositorio:
+
+```bash
+# Install dependencies and create the virtual environment
+uv sync
+
+# Preview the electric field (low quality, fast)
+uv run manim -ql campo_electrico/campo_electrico.py CampoElectrico
+
+# Render the electric field in desktop quality (1920x1080, 16:9, 60 fps)
+uv run manim -qh campo_electrico/campo_electrico.py CampoElectrico
+```
+
+`uv sync` uses Python 3.11 or 3.12 and installs the exact dependency versions
+recorded in `uv.lock`. For example, to render Gauss's Law:
+
+```bash
+uv run manim -ql ley_de_gauss/ley_de_gauss.py LeyDeGauss
+```
+
+Para renderizar todos los videos en 1920×1080 (16:9):
+
+```bash
+uv run manim -qh campo_electrico/campo_electrico.py CampoElectrico
+uv run manim -qh campo_electrico/campo_electrico_big.py CampoElectrico
+uv run manim -qh ley_de_gauss/ley_de_gauss.py LeyDeGauss
+uv run manim -qh dipolo_electrico/dipolo_electrico.py DipoloElectrico
+uv run manim -qh potencial_electrico/potencial_electrico.py PotencialElectrico
+uv run manim -qh energia_electrostatica/energia_electrostatica.py EnergiaElectrostatica
+```
+
+### ⚡ Versión ManimGL (renders rápidos)
+
+Las escenas portadas a [ManimGL](https://github.com/3b1b/manim) viven junto a las
+originales con sufijo `_gl.py`. Usan `manimgl_compat/`, una capa que reproduce el
+comportamiento de ManimCE 0.18.1 (tamaños, colores, timing, geometría) sobre el
+motor OpenGL: el código de cada escena es el mismo que el de CE. Correr siempre
+desde la raíz del repo (ahí está `custom_config.yml`):
+
+```bash
+uv run manimgl ley_de_gauss/ley_de_gauss_gl.py LeyDeGauss -w      # 1920x1080 60fps → media/manimgl/videos/
+uv run manimgl ley_de_gauss/ley_de_gauss_gl.py LeyDeGauss -w -l   # preview 480p
+uv run manimgl ley_de_gauss/ley_de_gauss_gl.py LeyDeGauss         # ventana interactiva
+```
+
+| Escena | ManimGL |
+|--------|---------|
+| Ley de Gauss | ✅ `ley_de_gauss/ley_de_gauss_gl.py` |
+| Campo Eléctrico, Potencial, Dipolo, Energía | ⏳ pendientes |
 
 ## 🎨 Style
 
